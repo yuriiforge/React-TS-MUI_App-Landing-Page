@@ -11,6 +11,8 @@ import {
   useTheme,
 } from '@mui/material';
 import ApiIcon from '@mui/icons-material/Api';
+import GoogleIcon from '@mui/icons-material/Google';
+import Email from '@mui/icons-material/Email';
 import DrawerComponent from './Drawer';
 
 const links: string[] = ['Products', 'Solutions', 'Pricing', 'Enterprise'];
@@ -81,6 +83,7 @@ const Header = () => {
         />
         <Box display="flex" width="100%">
           <Typography
+            fontSize={{ lg: 30, md: 24, sm: 18, xs: 14 }}
             margin="auto"
             variant="h4"
             color="black"
@@ -97,8 +100,12 @@ const Header = () => {
           margin="auto"
           marginTop={5}
         >
-          <Button variant="outlined">Sign Up With Email</Button>
-          <Button variant="contained">Sign Up With Google</Button>
+          <Button endIcon={<Email />} variant="outlined">
+            Sign Up
+          </Button>
+          <Button color="error" endIcon={<GoogleIcon />} variant="contained">
+            Sign Up
+          </Button>
         </Box>
       </Box>
     </AppBar>
