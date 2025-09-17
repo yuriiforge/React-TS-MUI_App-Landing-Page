@@ -5,33 +5,40 @@ import {
   Tabs,
   Tab,
   Button,
-  Link,
-  Typography,
   useMediaQuery,
   useTheme,
+  Link,
 } from '@mui/material';
 import ApiIcon from '@mui/icons-material/Api';
 import GoogleIcon from '@mui/icons-material/Google';
 import Email from '@mui/icons-material/Email';
 import DrawerComponent from './Drawer';
+import { CustomTypography } from '../styles';
+import { useState } from 'react';
 
 const links: string[] = ['Products', 'Solutions', 'Pricing', 'Enterprise'];
 
 const Header = () => {
   const isMatch = useMediaQuery(useTheme().breakpoints.down('md'));
 
+  const [selectedTab, setSelectedTab] = useState<number>(0);
+
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setSelectedTab(newValue);
+  };
+
   return (
     <AppBar sx={{ bgcolor: 'transparent', boxShadow: '0', position: 'static' }}>
       {isMatch ? (
         <Box display="flex">
           <ApiIcon sx={{ color: 'black', padding: 1 }} />
-          <Typography
+          <CustomTypography
             sx={{ padding: 0.5, color: 'black' }}
             variant="h6"
             fontFamily="fantasy"
           >
             CodeEnv
-          </Typography>
+          </CustomTypography>
           <DrawerComponent links={links} />
         </Box>
       ) : (
@@ -45,20 +52,21 @@ const Header = () => {
           >
             <ApiIcon sx={{ color: 'black' }} />
             <Box>
-              <Tabs component={Link} sx={{ textDecoration: 'none' }}>
+              <Tabs
+                component={Link}
+                value={selectedTab}
+                onChange={handleTabChange}
+                sx={{ textDecoration: 'none' }}
+              >
                 {links.map((link, i) => (
                   <Tab
-                    sx={{
-                      fontWeight: 'bold',
-                      textDecoration: 'none',
-                      ':hover': {
-                        textDecoration: 'underline',
-                        textUnderlineOffset: '5px',
-                      },
-                    }}
                     key={i}
                     label={link}
                     value={i}
+                    sx={{
+                      fontWeight: 'bold',
+                      textDecoration: 'none',
+                    }}
                   />
                 ))}
               </Tabs>
@@ -82,7 +90,7 @@ const Header = () => {
           playsInline
         />
         <Box display="flex" width="100%">
-          <Typography
+          <CustomTypography
             fontSize={{ lg: 30, md: 24, sm: 18, xs: 14 }}
             margin="auto"
             variant="h4"
@@ -90,7 +98,7 @@ const Header = () => {
             textAlign="center"
           >
             Build Your Softwares Hassle Free And With Top Notch Quality
-          </Typography>
+          </CustomTypography>
         </Box>
         <Box
           width="100%"

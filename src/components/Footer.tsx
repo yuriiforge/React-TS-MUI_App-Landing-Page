@@ -4,6 +4,7 @@ const Footer = () => {
   return (
     <Box display="flex" flexDirection="column">
       <Typography
+        fontSize={{ lg: 30, md: 24, sm: 18, xs: 14 }}
         variant="h3"
         paddingTop={10}
         textAlign="center"
@@ -12,6 +13,7 @@ const Footer = () => {
         Ready for Any Team Size
       </Typography>
       <Typography
+        fontSize={{ lg: 24, md: 20, sm: 16, xs: 12 }}
         variant="caption"
         textAlign="center"
         paddingY={4}
