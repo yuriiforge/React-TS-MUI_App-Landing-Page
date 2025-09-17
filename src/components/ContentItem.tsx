@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import type { Content } from './Content';
 
 interface Props {
@@ -7,9 +7,12 @@ interface Props {
 }
 
 const ContentItem = ({ content, swap }: Props) => {
+  const isMatch = useMediaQuery(useTheme().breakpoints.down('md'));
+
   return (
     <Box
       display="flex"
+      flexDirection={isMatch ? 'column' : 'row'}
       padding={10}
       justifyContent="space-between"
       alignItems="center"
@@ -39,12 +42,13 @@ const ContentItem = ({ content, swap }: Props) => {
             src={content.img}
             alt={content.title}
             loading="lazy"
-            width="50%"
+            width={isMatch ? '100%' : '50%'}
             style={{
               boxShadow: '10px 10px 20px #ccc',
               borderRadius: 20,
               marginLeft: '10%',
               height: '300px',
+              marginTop: '8px',
             }}
           />
         </>
@@ -54,7 +58,7 @@ const ContentItem = ({ content, swap }: Props) => {
             src={content.img}
             alt={content.title}
             loading="lazy"
-            width="50%"
+            width={isMatch ? '100%' : '50%'}
             style={{
               boxShadow: '10px 10px 20px #ccc',
               borderRadius: 20,
