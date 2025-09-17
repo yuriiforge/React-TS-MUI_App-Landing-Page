@@ -14,7 +14,7 @@ const links: string[] = ['Products', 'Solutions', 'Pricing', 'Enterprise'];
 
 const Header = () => {
   return (
-    <AppBar sx={{ bgcolor: 'transparent', boxShadow: '0' }}>
+    <AppBar sx={{ bgcolor: 'transparent', boxShadow: '0', position: 'static' }}>
       <Toolbar>
         <Box
           sx={{
